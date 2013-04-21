@@ -64,6 +64,7 @@ public class CometServletClientTest extends Thread {
 	private String lastPartialSess = null;
 	private List<Long> times = new ArrayList<Long>();
 
+        static long startTime = System.nanoTime();
 	/**
 	 * Create a new instance of {@code CometServletClientTest}
 	 * 
@@ -207,7 +208,6 @@ public class CometServletClientTest extends Thread {
 		// / delay;
 		long timeWrite;
                 long timeRead;
-                long startTime = System.nanoTime();
 
 		while ((this.max--) > 0) {
 			sleep(this.delay);
