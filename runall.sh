@@ -12,7 +12,7 @@ do
     sleep 10
   fi
   # start AS7
-  ssh cluster08 /tmp/PROXY/jboss-nio2-client/runAS7.sh &
+  ssh cluster08 /tmp/PROXY/comet-client/runAS7.sh &
   sleep 10
 
   #curl -v http://172.17.40.254:8080/jboss-nio2-servlet/TestServlet
