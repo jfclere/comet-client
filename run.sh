@@ -23,6 +23,7 @@ log_file=$(date +%s)-log.txt
 mvn exec:java -Dexec.mainClass="org.jboss.web.comet.CometServletClientTest" -Dexec.args="$url $n $delay $nb_req $nb_clients" > $log_file
 
 #printf "max \t min \t avg\n" > $filename
-egrep -v '[a-zA-Z]|^\s*$' $log_file >> $filename
+#egrep -v '[a-zA-Z]|^\s*$' $log_file >> $filename
+cat $log_file | grep ^WRITE >> ~/$n-$delay-$nReq-$nClients-log.txt
 
 #mvn exec:java -Dexec.mainClass="org.jboss.web.comet.LogParser" -Dexec.args="$filename $nb_req"
