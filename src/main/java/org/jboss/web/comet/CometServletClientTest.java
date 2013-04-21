@@ -201,19 +201,25 @@ public class CometServletClientTest extends Thread {
 		// Wait a delay to ensure that all threads are ready
 		Random random = new Random();
 		sleep(DEFAULT_DELAY + random.nextInt(1000));
-		long time = 0;
+		// long time = 0;
 		String response = null;
 		// int counter = 0, min_count = 10 * 1000 / delay, max_count = 50 * 1000
 		// / delay;
+		long timeWrite;
+                long timeRead;
+                long startTime = System.nanoTime();
 
 		while ((this.max--) > 0) {
 			sleep(this.delay);
-			time = System.currentTimeMillis();
+			//time = System.currentTimeMillis();
+			timeWrite = System.nanoTime();
 			writechunk(os, "Testing ...");
 			response = readchunk(in);
 			// System.out.println("From Server -> " + response);
-			time = System.currentTimeMillis() - time;
-			times.add(time);
+			// time = System.currentTimeMillis() - time;
+			timeRead = System.nanoTime();
+                       	System.out.println("WRITE " + (timeWrite - startTime) + " READ " + (timeRead - startTime));
+			times.add(timeRead - timeWrite);
 			if (response == null) {
 				// Reach the end of the stream
 				break;
