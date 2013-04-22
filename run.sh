@@ -12,6 +12,16 @@ delay=$3;
 nb_req=$4;
 nb_clients=$5;
 
+printf "Running clients with:\n";
+echo "";
+printf "\tURL: $url\n";
+printf "\tNumber of clients: $n\n";
+printf "\tDelay: $delay\n";
+printf "\tTotal number of requests: $nb_req\n";
+printf "\tTotal number of clients: $nb_clients\n";
+
+printf "\n\t-> Log file: $filename\n";
+
 
 #filename=$n-$max-$delay-$(date +%s)-log.txt
 filename=$n-$delay-$nb_req-$nb_clients-$(date +%s)-log.txt
@@ -24,6 +34,6 @@ mvn exec:java -Dexec.mainClass="org.jboss.web.comet.CometServletClientTest" -Dex
 
 #printf "max \t min \t avg\n" > $filename
 #egrep -v '[a-zA-Z]|^\s*$' $log_file >> $filename
-cat $log_file | grep ^WRITE >> ~/$n-$delay-$nReq-$nClients-log.txt
+cat $log_file | grep ^WRITE >> ~/$n-$delay-$nb_req-$nb_clients-log.txt
 
 #mvn exec:java -Dexec.mainClass="org.jboss.web.comet.LogParser" -Dexec.args="$filename $nb_req"
